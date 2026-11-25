@@ -2,8 +2,6 @@
 export const portfolioResumeEnglish = {
   '이력서 본문': 'Resume',
   '이력서 닫기': 'Close resume',
-  '서울 상주 가능': 'Available for on-site work in Seoul',
-  '개인 포트폴리오 · 링크 추가 예정': 'Personal portfolio · Link coming soon',
   '헥톤프로젝트': 'Hecton Project',
   '루니젠': 'RunigenInc.',
   '2026.11 사업 분사로 조아실버케어에 고용 승계': 'Employment transferred to JOA Silvercare in November 2026 following a business spin-off.',

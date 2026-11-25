@@ -34,8 +34,6 @@ export function ResumeDialog() {
             </p>
             <address>
               <a href="mailto:kygcode09@gmail.com">{'kygcode09@gmail.com'}</a>
-              <span>{'서울 상주 가능'}</span>
-              <span>{'개인 포트폴리오 · 링크 추가 예정'}</span>
             </address>
           </header>
           <section className="resume-section">
