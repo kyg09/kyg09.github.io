@@ -11,7 +11,8 @@ export type PreparedPushWall = {
 };
 
 const duration = 2950;
-const preloadDeadline = 1100;
+// 첫 방문의 이미지 다운로드 시간을 재생 시간에 포함하지 않는다. 실패·장기 지연 때만 로고로 대체한다.
+const preloadDeadline = 20000;
 const reachStart = 410;
 const contactTime = 600;
 const strainTime = 720;
@@ -226,6 +227,8 @@ async function loadFrames(signal: AbortSignal) {
 
   const frames = pushWallPoses.map(({ src }) => {
     const frame = new Image();
+    frame.fetchPriority = "high";
+    frame.decoding = "async";
     frame.src = src;
     return frame;
   });
@@ -365,7 +368,8 @@ export async function preparePushWall(
       dispose();
       return;
     }
-    if (lastTime !== undefined) elapsed += now - lastTime;
+    // 첫 페인트나 긴 메인 스레드 작업 뒤에도 동작을 통째로 건너뛰지 않는다.
+    if (lastTime !== undefined) elapsed += Math.min(now - lastTime, 64);
     lastTime = now;
     if (elapsed >= duration) {
       dispose();

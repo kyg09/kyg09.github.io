@@ -15,7 +15,11 @@ export const landingPaintGuard = `(() => {
 
   const root = document.documentElement;
   root.classList.add('has-landing-intro');
-  setTimeout(() => {
+  // 첫 방문의 느린 스크립트 다운로드 중에는 본문을 먼저 노출하지 않는다.
+  // 페이지 로드가 끝나도 런타임이 시작하지 못했을 때만 보호 화면을 해제한다.
+  const releaseIfUnavailable = () => setTimeout(() => {
     if (!document.querySelector('#landing-intro[open]')) root.classList.remove('has-landing-intro');
   }, 4500);
+  if (document.readyState === 'complete') releaseIfUnavailable();
+  else window.addEventListener('load', releaseIfUnavailable, { once: true });
 })();`;

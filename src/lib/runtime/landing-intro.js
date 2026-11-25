@@ -56,6 +56,8 @@ export function showLandingIntro({ reduceMotion, initPortfolio }) {
   const { signal } = lifecycle;
   const dockAnimations = [];
   let autoDismiss;
+  let settleLogoReady;
+  const logoReady = new Promise((resolve) => { settleLogoReady = resolve; });
   let finished = false;
   let portfolioStarted = false;
   let focusHeading = false;
@@ -74,6 +76,7 @@ export function showLandingIntro({ reduceMotion, initPortfolio }) {
   function finish() {
     if (finished) return;
     finished = true;
+    settleLogoReady(false);
     clearTimeout(autoDismiss);
     lifecycle.abort();
     dockAnimations.forEach((animation) => animation.cancel());
@@ -157,11 +160,15 @@ export function showLandingIntro({ reduceMotion, initPortfolio }) {
     if (!covered) skip.focus({ preventScroll: true });
   }
 
-  function startLogo() {
+  async function startLogo() {
     if (finished || !dialog.open) return;
     dialog.dataset.introPhase = "logo";
-    autoDismiss = setTimeout(dockLogo, LOGO_HOLD_DURATION);
     revealLogo();
+    // 다운로드·디코드가 끝나 실제 화면에 그려진 뒤부터 표시 시간을 센다.
+    if (!(await logoReady) || finished || !dialog.open) return;
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    if (finished || !dialog.open) return;
+    autoDismiss = setTimeout(dockLogo, LOGO_HOLD_DURATION);
     setActionsCovered(false);
   }
 
@@ -199,7 +206,13 @@ export function showLandingIntro({ reduceMotion, initPortfolio }) {
   logo.addEventListener(
     "load",
     function () {
-      logo.classList.add("is-loaded");
+      const ready = () => {
+        if (finished) return;
+        logo.classList.add("is-loaded");
+        settleLogoReady(true);
+      };
+      if (typeof logo.decode === "function") logo.decode().then(ready, ready);
+      else ready();
     },
     { once: true, signal },
   );
@@ -238,7 +251,7 @@ export function showLandingIntro({ reduceMotion, initPortfolio }) {
     } catch {
       // 벽 에셋이 없거나 재생에 실패하면 기존 로고 장면으로 이어간다.
     }
-    startLogo();
+    void startLogo();
   }
 
   void playOpening();
