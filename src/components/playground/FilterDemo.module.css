@@ -1,0 +1,35 @@
+.panel { padding: 24px; border: 1px solid color-mix(in srgb, var(--color-content-text) 22%, transparent); border-radius: 10px; color: var(--color-content-text); background: var(--color-bg); font-family: var(--font-primary); font-size: 13px; line-height: 1.7; min-inline-size: 0; }
+.panel :is(button, input, select) { color: inherit; font: inherit; }
+.panel button { min-block-size: 40px; padding: 6px 10px; background: none; border: 0; cursor: pointer; }
+.panel button:disabled { opacity: .4; cursor: default; }
+.panel :is(button, input, select):focus-visible { outline: 2px solid var(--color-content-text); outline-offset: 4px; }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.heading h3 { font-size: 15px; font-weight: 500; line-height: 1.4; margin: 0; }
+.heading button { padding-inline: 0; font-size: 12px; }
+.description { margin: 16px 0 22px; color: var(--color-muted); font-size: 12px; word-break: keep-all; }
+.controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.panel .outline { border: 1px solid currentColor; border-radius: 5px; padding-inline: 14px; }
+.controls label { display: flex; align-items: center; gap: 10px; font-size: 11px; }
+.controls select { max-inline-size: 150px; min-block-size: 40px; background: var(--color-bg); border: 1px solid color-mix(in srgb, currentColor 22%, transparent); border-radius: 4px; padding: 5px; }
+.editor { margin-block-start: 18px; padding: 18px; border: 1px solid color-mix(in srgb, currentColor 18%, transparent); border-radius: 6px; }
+.editor fieldset { border: 0; margin: 0; padding: 0; }
+.editor legend { font-size: 12px; margin-block-end: 12px; }
+.editor label { display: flex; align-items: center; gap: 10px; min-block-size: 40px; }
+.editor input { inline-size: 16px; block-size: 16px; accent-color: var(--color-content-text); }
+.draftCount { margin: 14px 0; font-size: 12px; }
+.empty { color: var(--color-muted); font-size: 12px; margin: 0 0 12px; padding-inline-start: 10px; border-inline-start: 2px solid var(--edit-ink, #f24822); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 5px; }
+.actions button:first-child { margin-inline-end: auto; }
+.panel .primary { background: var(--color-content-text); color: var(--color-bg); border-radius: 5px; padding-inline: 12px; }
+.applied { margin: 24px 0 15px; color: var(--color-muted); font-size: 11px; }
+.resultHeading { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 11px; }
+.resultHeading strong { font-weight: 500; }
+.resultHeading strong::before { content: ''; display: inline-block; inline-size: 5px; block-size: 5px; margin-inline-end: 6px; border-radius: 50%; background: #2fb36a; vertical-align: middle; }
+.results { list-style: none; margin: 8px 0 0; padding: 0; }
+.results li { display: flex; align-items: center; gap: 14px; padding-block: 16px; border-block-start: 1px solid color-mix(in srgb, currentColor 13%, transparent); }
+.results h4 { margin: 0 0 3px; font-size: 13px; font-weight: 500; }
+.results p { margin: 0; font-size: 11px; color: var(--color-muted); }
+.facilityMark { font-size: 30px; font-weight: 400; line-height: 1; transform: rotate(-3deg); }
+.footnote { margin: 8px 0 0; font-size: 10px; color: var(--color-muted); }
+@media (max-width: 479px) { .panel { padding: 16px; } .editor { padding: 14px; } }
+@media (pointer: coarse) { .panel :is(button, select), .editor label { min-block-size: 44px; } }

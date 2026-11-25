@@ -1,0 +1,76 @@
+name: Validate and deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# 검증 코드는 저장소를 수정하거나 배포 토큰을 사용할 수 없다.
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check assets and cart rules
+        run: |
+          npm run check:assets
+          npm run check:cart
+      - name: Build static portfolio
+        run: npm run build:pages
+      - name: Validate exported pages and public files
+        run: npm run check:pages
+      # 취약점이나 조회 오류를 무시하지 않는다. 이 단계가 실패하면 업로드·배포도 멈춘다.
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+      - name: Upload reviewed Pages output
+        if: >-
+          github.repository == 'kyg09/kyg09.github.io' &&
+          github.ref == 'refs/heads/main' &&
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+          vars.ENABLE_GITHUB_PAGES == 'true'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: out
+          retention-days: 1
+
+  deploy:
+    needs: build
+    if: >-
+      github.repository == 'kyg09/kyg09.github.io' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+      vars.ENABLE_GITHUB_PAGES == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # 빌드·의존성 설치 없이 같은 실행에서 검증된 산출물만 OIDC로 배포한다.
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

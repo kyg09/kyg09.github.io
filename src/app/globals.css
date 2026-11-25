@@ -1,0 +1,6 @@
+/* 기존 타이포그래피와 간격을 그대로 사용하기 위해 Tailwind의 기본 초기화는 불러오지 않는다. */
+/* 캐러셀 기본 스타일보다 포트폴리오 카드 배치가 우선한다. */
+@layer theme, base, blossom-carousel, portfolio, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "../styles/portfolio.css" layer(portfolio);
+@import "tailwindcss/utilities.css" layer(utilities);

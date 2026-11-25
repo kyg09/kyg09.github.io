@@ -1,0 +1,111 @@
+/* 데이터의 단계 수와 실제 콘텐츠 폭을 기준으로 간단한 흑백 업무 흐름을 표시한다. */
+.flow {
+  container-type: inline-size;
+  margin: 0;
+  color: var(--color-content-text);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-inline-size: 0;
+  min-block-size: 72px;
+  padding: 12px;
+  text-align: center;
+}
+
+/* 글자는 반듯하게 두고 테두리만 살짝 기울여 손으로 그린 선을 표현한다. */
+.step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.2px solid currentColor;
+  border-block-end: 0;
+  border-radius: 5px 8px 6px 4px / 7px 5px 8px 6px;
+  opacity: 0.45;
+  transform: rotate(-0.45deg);
+  pointer-events: none;
+}
+
+.step:nth-child(even)::before {
+  transform: rotate(0.45deg);
+}
+
+.step:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  inset-inline-start: calc(50% - 10px);
+  inset-block-end: -23px;
+  inline-size: 20px;
+  font-size: 19px;
+  line-height: 22px;
+  opacity: 0.65;
+}
+
+.index {
+  color: var(--color-muted);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.label::after {
+  content: "";
+  position: absolute;
+  inset-inline: 1px;
+  inset-block-end: -1px;
+  block-size: 3px;
+  background: currentColor;
+  -webkit-mask-image: var(--hand-line);
+  mask-image: var(--hand-line);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.caption {
+  margin-block-start: 16px;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+@container (min-width: 440px) {
+  .steps {
+    grid-template-columns: repeat(var(--flow-count), minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .step {
+    padding-inline: 8px;
+  }
+
+  .step:not(:last-child)::after {
+    content: "→";
+    inset-inline-start: auto;
+    inset-inline-end: -21px;
+    inset-block-start: calc(50% - 11px);
+    inset-block-end: auto;
+  }
+}

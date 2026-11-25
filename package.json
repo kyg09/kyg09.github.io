@@ -1,0 +1,33 @@
+{
+  "name": "kygcode-portfolio-next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "check:assets": "node scripts/check-assets.mjs",
+    "dev:preview": "next dev --hostname 127.0.0.1 --port 4175",
+    "check:cart": "node scripts/check-cart-playground.mjs",
+    "build:pages": "STATIC_EXPORT=true SITE_URL=https://kyg09.github.io next build",
+    "check:pages": "node scripts/check-pages-export.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,30 @@
+# 설치 의존성 및 생성 파일
+node_modules/
+/.next/
+/out/
+/dist/
+/next-env.d.ts
+*.tsbuildinfo
+
+# 로컬 환경 설정
+/.env
+/.env.*
+!/.env.example
+!/.env.*.example
+
+# 공개 배포와 Git 추적에서 제외하는 로컬 미디어 제작 원본
+/media-sources/
+
+# 검사 결과 및 로그
+/coverage/
+/.playwright-cli/
+/output/
+/playwright-report/
+/test-results/
+/playwright/.cache/
+npm-debug.log*
+
+# 로컬 시스템 파일
+.DS_Store
+*.swp
+*.swo

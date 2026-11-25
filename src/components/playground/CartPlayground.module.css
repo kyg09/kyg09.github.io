@@ -1,0 +1,291 @@
+/* 본문의 기존 폭·색·폰트를 유지하며 작은 장바구니 체험을 한 영역에 담는다. */
+.introduction {
+  margin-block-start: 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.panel {
+  /* 소개의 Open to work와 손그림 포인트에서 사용한 두 색만 작게 재사용한다. */
+  --cart-green: #2fb36a;
+  --cart-red: var(--edit-ink, #f24822);
+  min-inline-size: 0;
+  padding: 24px;
+  border: 1px solid color-mix(in srgb, var(--color-content-text) 22%, transparent);
+  border-radius: 10px;
+  color: var(--color-content-text);
+  background: var(--color-bg);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.panel :is(button, input) { font: inherit; color: inherit; }
+.panel button { cursor: pointer; }
+.panel button:disabled { cursor: default; opacity: 0.4; }
+.panel :is(button, input):focus-visible,
+.feedback:focus-visible,
+.preview h3:focus-visible {
+  outline: 2px solid var(--color-content-text);
+  outline-offset: 4px;
+}
+
+.panelHeading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-block-end: 22px;
+}
+
+.eyebrow {
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -5px;
+  block-size: 3px;
+  background: currentColor;
+  -webkit-mask-image: var(--hand-line);
+  mask-image: var(--hand-line);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  opacity: 0.55;
+}
+
+.textButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 36px;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  font-size: 12px !important;
+  text-underline-offset: 4px;
+}
+
+.textButton:not(:disabled):is(:active, :focus-visible) { text-decoration: underline; }
+
+@media (hover: hover) and (pointer: fine) {
+  .textButton:not(:disabled):hover { text-decoration: underline; }
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.presets button {
+  min-inline-size: 0;
+  min-block-size: 38px;
+  padding: 7px 6px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--color-content-text) 5%, transparent);
+  font-size: 12px;
+  line-height: 1.4;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.presets button[aria-pressed='true'] {
+  border-color: color-mix(in srgb, var(--cart-green) 70%, var(--color-content-text));
+  background: var(--color-bg);
+  font-weight: 500;
+}
+
+.scenarioHint {
+  margin-block: 12px 18px;
+  min-block-size: 40px;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.profileCard {
+  min-inline-size: 0;
+  margin-block-end: 24px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--color-content-text) 18%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--color-content-text) 3%, var(--color-bg));
+}
+
+.profileHeading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; margin-block-end: 14px; }
+.profileHeading h4 { margin: 0; font-size: 15px; line-height: 1.5; font-weight: 500; }
+.profileHeading > span { font-size: 11px; color: var(--color-muted); }
+
+.profile {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+  margin: 0 0 18px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.profile > div { display: grid; align-content: start; min-inline-size: 0; gap: 3px; }
+.profile dt { color: var(--color-muted); }
+.profile dd { margin: 0; font-size: 12px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.allowanceTable { inline-size: 100%; border-collapse: collapse; font-size: 11px; line-height: 1.6; }
+.allowanceTable caption { margin-block-end: 8px; text-align: start; font-size: 11px; font-weight: 500; }
+.allowanceTable th, .allowanceTable td { padding: 6px 0; text-align: start; border-block-end: 1px solid color-mix(in srgb, var(--color-content-text) 12%, transparent); }
+.allowanceTable th { font-weight: 400; }
+.allowanceTable thead th { color: var(--color-muted); font-size: 10px; }
+.allowanceTable tr > :last-child { text-align: end; }
+.allowanceTable tbody tr:last-child > * { border-block-end: 0; }
+.allowanceTable td { font-variant-numeric: tabular-nums; }
+
+.feedback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block: 0 18px;
+  padding: 10px 12px;
+  border-inline-start: 2px solid color-mix(in srgb, var(--color-content-text) 65%, transparent);
+  background: color-mix(in srgb, var(--color-content-text) 4%, transparent);
+  font-size: 12px;
+  line-height: 1.7;
+  border-radius: 0 4px 4px 0;
+}
+
+.feedback[hidden] { display: none; }
+.feedback p { margin: 0; min-inline-size: 0; word-break: keep-all; }
+.feedback .textButton { flex: 0 0 auto; }
+.feedback[data-kind='issue'] { border-inline-start-color: var(--cart-red); display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: start; gap: 8px 12px; }
+.feedback[data-kind='issue'] > .textButton { grid-column: 2; justify-self: end; }
+.alertDrawing { inline-size: 24px; block-size: 24px; margin-block-start: 2px; stroke: var(--cart-red); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.overValue { color: var(--cart-red); }
+.issueBody { flex: 1 1 auto; min-inline-size: 0; }
+.issueBody > p { overflow-wrap: anywhere; }
+.issueBody > p + p { margin-block-start: 10px; }
+.issueDetails { display: grid; gap: 5px; margin: 12px 0; font-size: 11px; line-height: 1.6; }
+.issueDetails > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.issueDetails dt { color: var(--color-muted); }
+.issueDetails dd { margin: 0; font-variant-numeric: tabular-nums; }
+.recovery { display: flex; justify-content: flex-end; margin-block: -8px 10px; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding-block: 10px 14px;
+  border-block-start: 1px solid color-mix(in srgb, var(--color-content-text) 16%, transparent);
+}
+
+.selectAll,
+.benefitToggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.selectAll { min-block-size: 36px; font-size: 13px; }
+.selectAll small { color: var(--color-muted); font-size: 11px; white-space: nowrap; }
+.checkbox { flex: 0 0 auto; inline-size: 16px; block-size: 16px; margin: 0; accent-color: var(--color-content-text); cursor: pointer; }
+.checkbox:disabled { cursor: default; }
+.benefitToggle:has(input:disabled) { cursor: default; opacity: 0.5; }
+
+.productSections { display: grid; gap: 26px; }
+.productSection { min-inline-size: 0; }
+.productSection > h4 { margin: 0 0 12px; font-size: 13px; line-height: 1.6; font-weight: 500; overflow-wrap: anywhere; }
+.cartList { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.productGroup { min-inline-size: 0; border: 1px solid color-mix(in srgb, var(--color-content-text) 17%, transparent); border-radius: 7px; padding: 15px; }
+.productHeading { display: flex; align-items: center; gap: 10px; }
+.drawing { flex: 0 0 40px; inline-size: 40px; block-size: 40px; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transform: rotate(-2deg); }
+.productName { min-inline-size: 0; font-size: 14px; font-weight: 500; line-height: 1.5; cursor: pointer; word-break: keep-all; overflow-wrap: anywhere; }
+.productName small { display: block; margin-block-start: 2px; color: var(--color-muted); font-size: 10px; font-weight: 400; }
+.purchaseBadge { display: inline-flex; margin-block-start: 6px; padding: 2px 5px; border: 1px solid color-mix(in srgb, var(--color-content-text) 25%, transparent); border-radius: 3px; font-size: 10px; font-weight: 400; }
+.purchaseBadge[data-benefit='true'] { border-color: color-mix(in srgb, var(--color-content-text) 30%, transparent); background: color-mix(in srgb, var(--color-content-text) 5%, transparent); }
+.allowanceSummary { margin-block-start: 14px; padding-block-start: 10px; border-block-start: 1px solid color-mix(in srgb, var(--color-content-text) 10%, transparent); }
+.allowanceSummary dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0; font-size: 10px; line-height: 1.5; }
+.allowanceSummary dt { color: var(--color-muted); word-break: keep-all; overflow-wrap: anywhere; }
+.allowanceSummary dd { margin: 4px 0 0; font-size: 12px; font-variant-numeric: tabular-nums; }
+.allowanceSummary p { margin: 8px 0 0; font-size: 10px; color: var(--color-muted); }
+.options { margin-block-start: 14px; }
+.option + .option { padding-block-start: 13px; margin-block-start: 13px; border-block-start: 1px solid color-mix(in srgb, var(--color-content-text) 10%, transparent); }
+.optionMain { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 12px; }
+.optionLabel { display: flex; flex-direction: column; gap: 3px; min-inline-size: 0; flex: 1 1 120px; font-size: 12px; overflow-wrap: anywhere; }
+.optionLabel small { color: var(--color-muted); font-size: 11px; }
+.quantityControl { display: inline-flex; align-items: center; flex: 0 0 auto; border: 1px solid color-mix(in srgb, var(--color-content-text) 26%, transparent); border-radius: 4px; }
+.quantityControl button { display: grid; place-items: center; inline-size: 32px; block-size: 34px; padding: 0; border: 0; background: transparent; font-size: 17px; line-height: 1; }
+.quantityControl input { inline-size: 42px; min-inline-size: 0; block-size: 30px; margin: 0; padding: 0 2px; border: 0; background: transparent; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
+.quantityControl input::-webkit-inner-spin-button,
+.quantityControl input::-webkit-outer-spin-button { margin: 0; -webkit-appearance: none; }
+.option[data-error='true'] .quantityControl { border-color: #ab824c; }
+.optionMeta { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 8px 12px; margin-block-start: 10px; font-size: 11px; color: var(--color-muted); }
+.optionMeta:empty { display: none; }
+.benefitToggle { min-block-size: 26px; }
+.benefitToggle .checkbox { inline-size: 14px; block-size: 14px; }
+.stockNotice { display: inline-flex; align-items: center; gap: 5px; }
+.stockNotice i { inline-size: 4px; block-size: 4px; border-radius: 50%; background: #a68d63; }
+
+.totals { display: grid; gap: 11px; margin: 24px 0 20px; padding-block-start: 20px; border-block-start: 1px solid color-mix(in srgb, var(--color-content-text) 18%, transparent); font-size: 12px; line-height: 1.6; }
+.totals > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.totals dt { min-inline-size: 0; color: var(--color-muted); }
+.totals dd { flex: 0 0 auto; margin: 0; font-variant-numeric: tabular-nums; text-align: end; }
+.totalPayment { padding-block: 11px; border-block: 1px solid color-mix(in srgb, var(--color-content-text) 10%, transparent); font-size: 15px; font-weight: 500; }
+.totalPayment dt { color: var(--color-content-text); }
+.remaining { font-size: 11px; }
+.calculationNote { margin: -7px 0 20px; font-size: 11px; line-height: 1.75; color: var(--color-muted); word-break: keep-all; }
+
+.primaryButton,
+.secondaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-block-size: 44px; padding: 10px 15px; border-radius: 5px; border: 1px solid var(--color-content-text); text-align: center; font-size: 13px; line-height: 1.5; transition: opacity 160ms ease; }
+.primaryButton { inline-size: 100%; background: var(--color-content-text); color: var(--color-bg) !important; }
+.secondaryButton { background: transparent; }
+.orderHint { margin-block-start: 10px; color: var(--color-muted); font-size: 11px; line-height: 1.65; text-align: center; }
+.empty { padding: 30px 8px; text-align: center; }
+.empty h3 { margin: 0 0 8px; font-size: 17px; font-weight: 500; line-height: 1.5; }
+.empty p { margin: 0 0 20px; color: var(--color-muted); font-size: 12px; line-height: 1.75; word-break: keep-all; }
+
+.preview { padding-block-start: 12px; animation: preview-in 200ms ease both; }
+.preview h3 { margin: 0; font-size: 22px; font-weight: 500; line-height: 1.35; letter-spacing: -0.025em; }
+.previewDescription { margin-block: 12px 20px; font-size: 12px; line-height: 1.75; color: var(--color-muted); word-break: keep-all; }
+.previewList { display: grid; gap: 16px; margin: 0; padding: 18px 0; border-block: 1px solid color-mix(in srgb, var(--color-content-text) 14%, transparent); list-style: none; font-size: 12px; line-height: 1.6; }
+.previewList li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.previewList li > span:first-child { min-inline-size: 0; overflow-wrap: anywhere; }
+.previewList li > span:last-child { flex: 0 0 auto; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.previewList small { display: block; margin-block-start: 3px; font-size: 11px; color: var(--color-muted); }
+.previewActions { display: grid; gap: 9px; }
+
+@keyframes preview-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 479px) {
+  .panel { padding: 16px; }
+  .productGroup { padding: 12px; }
+  .drawing { flex-basis: 32px; inline-size: 32px; block-size: 36px; }
+  .productHeading { gap: 8px; }
+  .productName { font-size: 13px; }
+  .quantityControl { margin-inline-start: auto; }
+  .totals > div { gap: 10px; }
+  .feedback { flex-wrap: wrap; }
+  .profileCard { padding: 12px; }
+  .profile { grid-template-columns: minmax(0, 1fr); gap: 9px; }
+  .allowanceSummary dl { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .allowanceSummary dl > div { display: flex; justify-content: space-between; gap: 10px; }
+  .allowanceSummary dd { margin: 0; flex: 0 0 auto; }
+}
+
+@media (pointer: coarse) {
+  .quantityControl button { inline-size: 44px; block-size: 44px; }
+  .quantityControl input { inline-size: 44px; block-size: 40px; }
+  .textButton, .selectAll, .benefitToggle, .presets button { min-block-size: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preview { animation: none; }
+  .panel :is(button, input) { transition: none; }
+}

@@ -1,0 +1,1093 @@
+.graphic {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 112px;
+  color: var(--color-text);
+  --graphic-line: color-mix(in srgb, var(--color-text) 65%, var(--color-bg));
+  --graphic-fill: color-mix(in srgb, var(--color-text) 5%, var(--color-bg));
+}
+
+.graphic :where(i) {
+  display: block;
+  font-style: normal;
+}
+
+.arrow {
+  position: absolute;
+  top: 43px;
+  left: 44%;
+  width: 13%;
+  height: 20px;
+  border-top: 1.5px solid var(--color-text);
+  border-radius: 55% 80% 0 0;
+  transform: rotate(12deg);
+}
+
+.arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 1px;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid var(--color-text);
+  border-bottom: 1.5px solid var(--color-text);
+  transform: rotate(8deg);
+}
+
+.componentPieces {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 41%;
+}
+
+.inputPiece {
+  position: absolute;
+  top: 1px;
+  left: 5%;
+  width: 92%;
+  height: 36px;
+  padding: 8px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 4px;
+  transform: rotate(-5deg);
+}
+
+.inputPiece::before {
+  content: '';
+  display: block;
+  width: 22%;
+  height: 3px;
+  margin-bottom: 6px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.inputPiece > i {
+  width: 85%;
+  height: 7px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 2px;
+  opacity: .55;
+}
+
+.buttonPiece {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 64%;
+  height: 27px;
+  border-radius: 4px;
+  background: var(--color-text);
+  transform: rotate(2deg);
+}
+
+.buttonPiece > i {
+  width: 45%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-bg);
+}
+
+.togglePiece {
+  position: absolute;
+  top: 84px;
+  left: 35%;
+  width: 38px;
+  height: 20px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 15px;
+  background: var(--graphic-fill);
+  transform: rotate(-4deg);
+}
+
+.togglePiece > i {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+.package {
+  position: absolute;
+  top: 23px;
+  right: 0;
+  width: 39%;
+  height: 75px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 5px;
+  background: var(--graphic-fill);
+  transform: rotate(3deg);
+}
+
+.package::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 8px;
+  width: 35%;
+  height: 7px;
+  border: 1px solid var(--graphic-line);
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+  background: var(--graphic-fill);
+}
+
+.packageLabel {
+  display: block;
+  margin: 12px 9px 0;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+.componentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin: 10px 9px;
+}
+
+.componentGrid > i {
+  height: 22px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 2px;
+  background: var(--color-bg);
+}
+
+.componentGrid > i:nth-child(2) {
+  background: color-mix(in srgb, var(--color-text) 13%, var(--color-bg));
+}
+
+.window {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 41%;
+  height: 89px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 5px;
+  background: var(--color-bg);
+  transform: rotate(-4deg);
+  overflow: hidden;
+}
+
+.windowBar {
+  height: 17px;
+  border-bottom: 1px solid var(--graphic-line);
+  background: var(--graphic-fill);
+}
+
+.windowBar::before {
+  content: '';
+  display: block;
+  width: 23%;
+  height: 3px;
+  margin: 7px 8px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  margin: 9px;
+}
+
+.productGrid > i {
+  height: 20px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 2px;
+  background: var(--graphic-fill);
+}
+
+.review {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  width: 37%;
+  height: 85px;
+  padding: 11px 10px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 4px;
+  transform: rotate(3deg);
+}
+
+.reviewLine {
+  position: relative;
+  height: 20px;
+}
+
+.reviewLine::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 59%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.check {
+  width: 11px;
+  height: 7px;
+  border-left: 1.5px solid var(--color-text);
+  border-bottom: 1.5px solid var(--color-text);
+  transform: rotate(-45deg);
+}
+
+.reviewLine > .check {
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+
+.productList {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 41%;
+  height: 97px;
+  padding: 5px 8px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 4px;
+  transform: rotate(-3deg);
+}
+
+.productList > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.productList > span:last-child {
+  border-bottom: 0;
+}
+
+.productList > span > i:first-child {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 3px;
+  background: var(--graphic-fill);
+}
+
+.emptyCheck {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 2px;
+  opacity: .5;
+}
+
+.cart {
+  position: absolute;
+  top: 37px;
+  right: 6%;
+  width: 28%;
+  height: 40px;
+  border: 1.5px solid var(--graphic-line);
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  transform: skew(-8deg);
+}
+
+.cart::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  width: 12px;
+  height: 8px;
+  border-top: 1.5px solid var(--graphic-line);
+  border-right: 1.5px solid var(--graphic-line);
+}
+
+.cart > i:first-child {
+  position: absolute;
+  bottom: 8px;
+  left: 20%;
+  width: 58%;
+  height: 24px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 3px;
+  background: var(--graphic-fill);
+}
+
+.cart > i:nth-child(2), .cart > i:nth-child(3) {
+  position: absolute;
+  bottom: -14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+.cart > i:nth-child(2) {
+  left: 13%;
+}
+
+.cart > i:nth-child(3) {
+  right: 13%;
+}
+
+.servers {
+  position: absolute;
+  top: 17px;
+  left: 5%;
+  width: 33%;
+  transform: rotate(-3deg);
+}
+
+.servers > i {
+  position: relative;
+  height: 22px;
+  margin-bottom: 5px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 4px;
+  background: var(--graphic-fill);
+}
+
+.servers > i::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+.servers > i::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 38%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.resultWindow {
+  right: 0;
+  left: auto;
+  transform: rotate(3deg);
+}
+
+.searchField {
+  display: block;
+  height: 17px;
+  margin: 9px 8px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 9px;
+}
+
+.searchField > i {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  margin: 4px 6px;
+  border: 1px solid var(--color-text);
+  border-radius: 50%;
+}
+
+.searchField > i::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 1px;
+  right: -3px;
+  bottom: -1px;
+  background: var(--color-text);
+  transform: rotate(45deg);
+}
+
+.resultLine {
+  height: 3px;
+  margin: 7px 10px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.resultLine:last-child {
+  width: 48%;
+}
+
+.recipient {
+  position: absolute;
+  top: 23px;
+  left: 0;
+  width: 41%;
+  height: 70px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 5px;
+  transform: rotate(-5deg);
+}
+
+.avatar {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  margin: 11px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 50%;
+}
+
+.avatar::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -4px;
+  width: 23px;
+  height: 12px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 12px 12px 3px 3px;
+}
+
+.identityLine {
+  position: absolute;
+  top: 24px;
+  right: 9px;
+  width: 38%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.identityLine:last-child {
+  top: 37px;
+  width: 28%;
+  right: 19%;
+}
+
+.order {
+  position: absolute;
+  top: 10px;
+  right: 1%;
+  width: 35%;
+  height: 94px;
+  padding: 13px 9px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 4px;
+  transform: rotate(3deg);
+}
+
+.formField {
+  height: 15px;
+  margin-bottom: 10px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 3px;
+}
+
+.order > .check {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+.record {
+  position: absolute;
+  top: 8px;
+  left: 4%;
+  width: 34%;
+  height: 96px;
+  padding: 13px 10px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 3px;
+  transform: rotate(-4deg);
+}
+
+.cross {
+  position: relative;
+  width: 15px;
+  height: 4px;
+  margin: 7px 0 18px;
+  border-radius: 1px;
+  background: var(--color-text);
+}
+
+.cross::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 4px;
+  height: 15px;
+  border-radius: 1px;
+  background: var(--color-text);
+}
+
+.recordLine {
+  height: 3px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+/* 프로젝트 표지는 같은 흑백 선으로 시설·모바일·영상의 형태를 구분한다. */
+.facilityMap {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 41%;
+  height: 88px;
+  overflow: hidden;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 5px 8px 4px 6px / 7px 4px 6px 4px;
+  background: var(--graphic-fill);
+  transform: rotate(-4deg);
+}
+
+.mapStreet {
+  position: absolute;
+  top: 8px;
+  left: 36%;
+  width: 14px;
+  height: 120px;
+  border-inline: 1px solid var(--graphic-line);
+  background: var(--color-bg);
+  transform: rotate(23deg);
+}
+
+.mapStreet:nth-child(2) {
+  top: 31px;
+  left: -8px;
+  width: 130px;
+  height: 11px;
+  border: 0;
+  border-block: 1px solid var(--graphic-line);
+  transform: rotate(12deg);
+}
+
+.facilityPin {
+  position: absolute;
+  top: 13px;
+  left: 17%;
+  width: 11px;
+  height: 14px;
+  border: 1.5px solid var(--color-text);
+  border-radius: 7px 7px 7px 0;
+  background: var(--color-bg);
+  transform: rotate(-45deg);
+}
+
+.facilityPin:nth-child(4) {
+  top: 47px;
+  left: 63%;
+}
+
+.facilityPin:nth-child(5) {
+  top: 62px;
+  left: 20%;
+}
+
+.facilityResults {
+  position: absolute;
+  top: 14px;
+  right: 0;
+  width: 37%;
+  transform: rotate(3deg);
+}
+
+.facilityResults > i {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  margin-bottom: 6px;
+  padding: 5px;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 3px 5px 2px 4px;
+}
+
+.facilityResults > i > i {
+  width: 16px;
+  height: 13px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 2px;
+  background: var(--graphic-fill);
+}
+
+.facilityResults > i::after {
+  content: '';
+  width: 44%;
+  height: 3px;
+  margin-left: 7px;
+  background: var(--graphic-line);
+}
+
+.phone {
+  position: absolute;
+  top: 2px;
+  left: 8%;
+  width: 30%;
+  height: 106px;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 9px 11px 8px 10px;
+  background: var(--color-bg);
+  transform: rotate(-5deg);
+}
+
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 35%;
+  width: 30%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--graphic-line);
+}
+
+.phoneScreen {
+  display: block;
+  margin: 16px 8px 8px;
+}
+
+.phoneAvatar {
+  width: 19px;
+  height: 19px;
+  margin-bottom: 9px;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 50%;
+  background: var(--graphic-fill);
+}
+
+.phoneLine {
+  width: 83%;
+  height: 3px;
+  margin-bottom: 6px;
+  background: var(--graphic-line);
+}
+
+.phoneTiles {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.phoneTiles > i {
+  flex: 1;
+  height: 19px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 3px;
+  background: var(--graphic-fill);
+}
+
+.healthChart {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  width: 37%;
+  height: 78px;
+  padding: 10px;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 5px 8px 4px 6px;
+  transform: rotate(3deg);
+}
+
+.chartHeading {
+  width: 42%;
+  height: 3px;
+  background: var(--graphic-line);
+}
+
+.chartBars {
+  display: flex;
+  align-items: end;
+  gap: 6px;
+  height: 40px;
+  margin-top: 10px;
+  border-bottom: 1px solid var(--graphic-line);
+}
+
+.chartBars > i {
+  flex: 1;
+  height: 38%;
+  border: 1px solid var(--graphic-line);
+  border-radius: 2px 2px 0 0;
+  background: var(--graphic-fill);
+}
+
+.chartBars > i:nth-child(2) {
+  height: 68%;
+}
+
+.chartBars > i:nth-child(3) {
+  height: 51%;
+}
+
+.chartBars > i:last-child {
+  height: 89%;
+  background: var(--color-text);
+}
+
+.videoPlayer {
+  position: absolute;
+  top: 10px;
+  left: 2%;
+  width: 73%;
+  height: 87px;
+  overflow: hidden;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 5px 8px 4px 6px;
+  background: var(--graphic-fill);
+  transform: rotate(-3deg);
+}
+
+.playSymbol {
+  position: absolute;
+  top: 34px;
+  left: 46%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid var(--color-text);
+}
+
+.videoProgress {
+  position: absolute;
+  bottom: 11px;
+  left: 9%;
+  width: 82%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--graphic-line);
+}
+
+.videoProgress::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 38%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+.baseball {
+  position: absolute;
+  top: 63px;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  border: 1.5px solid var(--color-text);
+  border-radius: 50%;
+  background: var(--color-bg);
+  transform: rotate(14deg);
+}
+
+.baseball::before,
+.baseball::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  width: 22px;
+  height: 44px;
+  border: 1.5px dashed var(--graphic-line);
+  border-radius: 50%;
+}
+
+.baseball::before {
+  left: -12px;
+}
+
+.baseball::after {
+  right: -12px;
+}
+
+.recordLine:last-child {
+  width: 65%;
+}
+
+.exports {
+  color: var(--color-content-text);
+  position: absolute;
+  top: 18px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  width: 39%;
+  height: 80px;
+}
+
+.exports > i {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 43%;
+  height: 64px;
+  padding-bottom: 10px;
+  border: 1px solid var(--graphic-line);
+  border-radius: 3px;
+  background: var(--color-bg);
+  font-size: 9px;
+  line-height: 1;
+}
+
+.exports > i + i {
+  margin-left: -17%;
+}
+
+.exports > i:first-child {
+  transform: rotate(-8deg) translateY(3px);
+}
+
+.exports > i:last-child {
+  transform: rotate(8deg) translateY(3px);
+}
+
+/* 기존 손그림 필터는 도형에 한 번만 적용하고 작은 글자는 선명하게 둔다. */
+.graphic > :not(.package, .exports),
+.package::before,
+.package::after,
+.componentGrid,
+.exports > i::before {
+  filter: url('#hand-drawn');
+}
+
+.graphic :is(.inputPiece, .window, .review, .productList, .recipient, .order, .record) {
+  border-width: 1.5px;
+  border-radius: 5px 8px 4px 6px / 7px 4px 6px 4px;
+}
+
+.graphic :is(.inputPiece > i, .productGrid > i, .formField, .servers > i, .componentGrid > i) {
+  border-width: 1.5px;
+  border-radius: 3px 5px 2px 4px / 4px 2px 5px 3px;
+}
+
+.package {
+  border: none;
+  border-radius: 5px 8px 4px 6px / 7px 4px 6px 4px;
+}
+
+.package::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.package::before {
+  border-width: 1.5px;
+  border-radius: 4px 6px 0 0;
+}
+
+.exports > i {
+  position: relative;
+  isolation: isolate;
+  border: none;
+  background: none;
+}
+
+.exports > i::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: 1.5px solid var(--graphic-line);
+  border-radius: 3px 5px 2px 4px / 4px 2px 5px 3px;
+  background: var(--color-bg);
+}
+
+.inputPiece::before,
+.buttonPiece > i,
+.windowBar::before,
+.reviewLine::before,
+.resultLine,
+.identityLine,
+.recordLine {
+  -webkit-mask: var(--hand-line) center / 100% 100% no-repeat;
+  mask: var(--hand-line) center / 100% 100% no-repeat;
+}
+
+/* 첫 노트의 버튼·스위치는 채움 대신 손그림 선으로 표현한다. 다른 섹션에는 적용하지 않는다. */
+:global(#thoughts) :global(.note-grid .card) .graphic .buttonPiece {
+  border: 1.5px solid var(--graphic-line);
+  background: none;
+}
+
+:global(#thoughts) :global(.note-grid .card) .graphic .buttonPiece > i {
+  background: var(--graphic-line);
+}
+
+:global(#thoughts) :global(.note-grid .card) .graphic .togglePiece > i {
+  border: 1.5px solid var(--graphic-line);
+  background: var(--color-bg);
+}
+
+/* 카드 진입마다 한 번만 재생한다. 기존 transform 회전·손그림 필터·글자 배치는 유지한다. */
+@media (min-width: 769px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .arrow {
+    animation: note-transfer 820ms var(--ease-out) both;
+  }
+
+  /* Shared UI: 흩어진 조각이 패키지 쪽으로 모이고 내부 슬롯이 순서대로 확인된다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .componentPieces > i {
+    --note-piece-x: 14px;
+    --note-piece-y: 2px;
+    animation: note-piece-gather 860ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .buttonPiece { --note-piece-y: -2px; animation-delay: 40ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .togglePiece { --note-piece-y: -5px; animation-delay: 80ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .componentGrid > i {
+    animation: note-slot-ready 720ms var(--ease-out) both;
+    animation-delay: 100ms;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .componentGrid > i:nth-child(2) { animation-delay: 160ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .componentGrid > i:nth-child(3) { animation-delay: 220ms; }
+
+  /* 운영 개선: 상품을 읽은 뒤 검토 목록의 체크를 차례대로 그린다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.review) .productGrid > i {
+    animation: note-item-read 760ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .reviewLine > .check {
+    animation: note-check-draw 720ms var(--ease-out) both;
+    animation-delay: 80ms;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .reviewLine:nth-child(2) > .check { animation-delay: 160ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .reviewLine:nth-child(3) > .check { animation-delay: 240ms; }
+
+  /* 구매 조건: 선택된 두 품목과 체크만 이어지고, 미선택 항목은 그대로 남는다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .productList > span:has(.check) {
+    animation: note-item-read 760ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .productList .check {
+    animation: note-check-draw 760ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .productList > span:nth-child(2),
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .productList > span:nth-child(2) .check { animation-delay: 100ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .cart > i:first-child {
+    animation: note-cart-receive 820ms var(--ease-out) both;
+    animation-delay: 100ms;
+  }
+
+  /* 서버 조회: 세 서버의 응답을 순서대로 읽고 결과 문장을 드러낸다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .servers > i {
+    animation: note-server-response 760ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .servers > i:nth-child(2) { animation-delay: 80ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .servers > i:nth-child(3) { animation-delay: 160ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .resultLine {
+    animation: note-line-reveal 760ms var(--ease-out) both;
+    animation-delay: 100ms;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .resultLine:last-child { animation-delay: 200ms; }
+
+  /* IMS: 고객 정보에서 입력 필드로 이어진 뒤 마지막 확인 표시가 나타난다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .identityLine {
+    animation: note-line-reveal 760ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .formField {
+    animation: note-field-fill 800ms var(--ease-out) both;
+    animation-delay: 80ms;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .formField:nth-child(2) { animation-delay: 160ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .order > .check {
+    animation: note-check-draw 760ms var(--ease-out) both;
+    animation-delay: 200ms;
+  }
+
+  /* 문서 출력: 기록을 읽고 세 파일을 조금씩 펼친 뒤 제자리로 돌려놓는다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .recordLine {
+    animation: note-line-reveal 760ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .recordLine:nth-child(3) { animation-delay: 80ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic .recordLine:nth-child(4) { animation-delay: 160ms; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.record) .exports > i {
+    --note-file-x: 0px;
+    animation: note-file-fan 800ms var(--ease-out) both;
+    animation-delay: 80ms;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.record) .exports > i:first-child { --note-file-x: -4px; }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.record) .exports > i:last-child { --note-file-x: 4px; animation-delay: 160ms; }
+
+  /* 에디터 이미지: 본문의 이미지 조각을 읽고 IMG에서 URL 파일로 연결한다. */
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.window):has(.exports) .productGrid > i {
+    animation: note-item-read 800ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.window) .exports > i:first-child {
+    --note-file-x: 5px;
+    animation: note-file-fan 860ms var(--ease-out) both;
+  }
+  :global(#thoughts) :global(.note-grid .card:is(:hover:where(.can-hover *), :focus-visible, :focus-within, .is-touch-active)) .graphic:has(.window) .exports > i:last-child {
+    animation: note-slot-ready 800ms var(--ease-out) both;
+    animation-delay: 160ms;
+  }
+}
+
+/* keyframe은 개별 이동·크기만 바꿔 원래 회전 transform을 덮어쓰지 않는다. */
+@keyframes note-transfer {
+  0%, 100% { translate: 0 0; opacity: 1; }
+  32% { translate: 3px 0; opacity: 0.45; }
+  62% { translate: 1px 0; opacity: 1; }
+}
+@keyframes note-piece-gather {
+  0%, 100% { translate: 0 0; opacity: 1; }
+  38% { translate: var(--note-piece-x) var(--note-piece-y); opacity: 0.45; }
+  70% { translate: 0 0; opacity: 1; }
+}
+@keyframes note-slot-ready {
+  0%, 16% { scale: 0.9; opacity: 0.25; }
+  58%, 100% { scale: 1; opacity: 1; }
+}
+@keyframes note-item-read {
+  0%, 100% { translate: 0 0; opacity: 1; }
+  22% { translate: 2px 0; opacity: 0.4; }
+  62% { translate: 0 0; opacity: 1; }
+}
+@keyframes note-check-draw {
+  0%, 16% { clip-path: inset(0 100% 100% 0); opacity: 0; }
+  35% { clip-path: inset(0 75% 0 0); opacity: 1; }
+  62%, 100% { clip-path: inset(0); opacity: 1; }
+}
+@keyframes note-cart-receive {
+  0%, 15% { translate: 0 -7px; opacity: 0.25; }
+  58%, 100% { translate: 0 0; opacity: 1; }
+}
+@keyframes note-server-response {
+  0%, 100% { translate: 0 0; opacity: 1; }
+  24% { translate: 2px 0; opacity: 0.35; }
+  62% { translate: 0 0; opacity: 1; }
+}
+@keyframes note-line-reveal {
+  0%, 15% { clip-path: inset(0 100% 0 0); }
+  62%, 100% { clip-path: inset(0); }
+}
+@keyframes note-field-fill {
+  0%, 100% { background: transparent; opacity: 1; }
+  36% { background: var(--graphic-fill); opacity: 0.4; }
+  72% { background: transparent; opacity: 1; }
+}
+@keyframes note-file-fan {
+  0%, 100% { translate: 0 0; }
+  38% { translate: var(--note-file-x) -3px; }
+  72% { translate: var(--note-file-x) 0; }
+}
+
+/* 모션 감소 상태에서는 선으로 바꾼 디자인만 유지하고 추가 동작은 모두 생략한다. */
+@media (prefers-reduced-motion: reduce) {
+  :global(#thoughts) :global(.note-grid .card) .graphic,
+  :global(#thoughts) :global(.note-grid .card) .graphic * {
+    animation: none;
+    translate: none;
+    scale: none;
+  }
+}

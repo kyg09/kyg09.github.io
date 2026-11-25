@@ -1,0 +1,9 @@
+.introduction { margin: 1rem 0 0; color: var(--color-muted); font-size: .875rem; line-height: 1.75; word-break: keep-all; }
+.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-block-end: 22px; }
+.tabs button { position: relative; min-inline-size: 0; min-block-size: 44px; padding: 8px 4px 12px; border: 0; border-block-end: 1px solid color-mix(in srgb, var(--color-content-text) 15%, transparent); background: none; color: var(--color-muted); font: inherit; font-size: 14px; font-weight: 400; line-height: 1.4; cursor: pointer; }
+.tabs button[aria-selected='true'] { color: var(--color-content-text); font-weight: 700; border-block-end-color: transparent; }
+.tabs button[aria-selected='true']::after { content: ''; position: absolute; inset-inline: 0; inset-block-end: -1px; block-size: 3px; background: currentColor; -webkit-mask-image: var(--hand-line); mask-image: var(--hand-line); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; opacity: .7; }
+.tabs button:focus-visible { outline: 2px solid var(--color-content-text); outline-offset: 3px; }
+.panel { min-inline-size: 0; }
+.panel[hidden] { display: none; }
+@media (max-width: 359px) { .tabs { gap: 4px; } .tabs button { font-size: 12px; } }

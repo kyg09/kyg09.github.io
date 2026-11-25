@@ -1,0 +1,26 @@
+{
+  "ims": {
+    "wallpaper": "iMac Green",
+    "source": "/System/Library/Desktop Pictures/iMac Green.heic",
+    "asset": "macOS-wallpapers/ims-macos.jpg",
+    "status": "applied"
+  },
+  "ddoga-store": {
+    "wallpaper": "Mac Blue",
+    "source": "/System/Library/Desktop Pictures/Mac Blue.heic",
+    "status": "applied",
+    "asset": "macOS-wallpapers/ddoga-store-macos.jpg"
+  },
+  "ddoga-platform": {
+    "wallpaper": "Sonoma",
+    "source": "/System/Library/Desktop Pictures/Sonoma.heic",
+    "status": "applied",
+    "asset": "macOS-wallpapers/ddoga-platform-macos.jpg"
+  },
+  "care-solution": {
+    "wallpaper": "Mac Purple",
+    "source": "/System/Library/Desktop Pictures/Mac Purple.heic",
+    "status": "applied",
+    "asset": "macOS-wallpapers/care-solution-macos.jpg"
+  }
+}

@@ -1,0 +1,99 @@
+.conversation {
+  width: min(100%, 30rem);
+  margin-block-end: clamp(2.25rem, 5vw, 3rem);
+  color: var(--color-content-text);
+  text-align: start;
+}
+
+.stage { position: relative; height: clamp(22rem, 55vh, 28rem); overflow: hidden; }
+.portrait {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+.portrait :global(.footer-profile) { margin: 0; }
+.portrait :global(.footer-portrait),
+:global(.site-footer.will-sign) .portrait :global(.footer-portrait) { mask: none; -webkit-mask: none; translate: none; }
+
+.thread { position: absolute; inset-block-start: 0; inset-inline: 0; will-change: transform; display: flex; flex-direction: column; gap: 22px; padding: 0; margin: 0; list-style: none; }
+.turn { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; }
+.question, .measure, .answerText {
+  margin: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.question {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: 9px 14px;
+  border-radius: 10px 10px 4px 10px;
+  background: color-mix(in srgb, var(--color-text) 10%, var(--color-bg));
+  color: var(--color-content-text);
+  font-weight: 400;
+  opacity: 0;
+  transform-origin: bottom right;
+}
+.answerSlot { position: relative; width: fit-content; max-width: 100%; min-height: 40px; }
+.measure { visibility: hidden; width: max-content; max-width: 100%; padding: 9px 14px; min-height: 40px; user-select: none; }
+.answer {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  background: var(--color-paper, #ffffff);
+  color: var(--color-paper-ink, #181818);
+  border-radius: 10px 10px 10px 4px;
+  opacity: 0;
+}
+/* 질문·답변은 같은 글자 크기를 쓰고, 측정문도 실제 답변과 같은 줄바꿈을 유지한다. */
+.measure, .answerText { text-wrap: balance; font-weight: 500; }
+.measureWord { display: inline-block; }
+.answerText { position: absolute; inset-inline-start: 14px; inset-block-start: 9px; }
+.thinking {
+  position: absolute;
+  inset-inline-start: 14px;
+  inset-block-start: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 24px;
+  block-size: calc(0.875rem * 1.65);
+  color: var(--color-muted);
+}
+/* 작게 오르내리는 점은 실제 입력 중이고 화면에 보일 때만 움직인다. */
+.thinkingDot {
+  flex: none;
+  inline-size: 4px;
+  block-size: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+  animation: typingDot 1s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.thinkingDot:nth-child(2) { animation-delay: 140ms; }
+.thinkingDot:nth-child(3) { animation-delay: 280ms; }
+.thinking[data-active='true'] .thinkingDot { animation-play-state: running; }
+@keyframes typingDot {
+  0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+.word { display: inline-block; opacity: 0; will-change: transform, opacity, filter; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; padding: 0; margin: -1px; border: 0; }
+
+@media (max-width: 400px) { .thread { gap: 18px; } .question { max-width: 92%; } }
+@media (prefers-reduced-motion: reduce) {
+  .stage { height: auto; min-height: 0; overflow: visible; }
+  .thread { position: relative; transform: none !important; will-change: auto; }
+  .portrait { visibility: hidden; will-change: auto; }
+  .word, .question, .answer { will-change: auto; }
+  .thinkingDot { animation: none; opacity: 0.7; transform: none; }
+}
