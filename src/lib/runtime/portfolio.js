@@ -529,6 +529,69 @@ export function startPortfolioRuntime() {
     });
   }
 
+  // 프로젝트가 화면에 닿기 전에 포스터와 인접 영상만 준비한다. 재생은 기존 중앙 카드 판정이 관리한다.
+  function initProjectPreviewPreload() {
+    var projects = document.getElementById('projects');
+    if (!projects) return;
+    var targets = Array.from(projects.querySelectorAll('.project-featured .card, .card-rail'));
+    var posters = new Map();
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+
+    function warmCard(card) {
+      if (!card || document.hidden) return;
+      card.querySelectorAll('video[data-src]').forEach(function (video) {
+        var poster = video.getAttribute('poster');
+        if (poster && !posters.has(poster)) {
+          var image = new Image();
+          image.decoding = 'async';
+          image.src = poster;
+          posters.set(poster, image);
+          if (image.decode) image.decode().catch(function () {});
+        }
+        // 데이터 절약·느린 연결·모션 감소에서는 정지 화면만 준비한다.
+        if (reduceMotion || (connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType || '')))) return;
+        if (video.getAttribute('src')) return;
+        var source = videoSource(video);
+        if (!source) return;
+        video.preload = 'auto';
+        video.src = source;
+        video.load();
+      });
+    }
+
+    function warmTarget(target, current) {
+      if (!target._previewNear || document.hidden) return;
+      if (!target.classList.contains('card-rail')) { warmCard(target); return; }
+      var track = target.querySelector('.card-track');
+      var cards = track ? readRailCards(track) : [];
+      var active = current || cards.find(function (card) { return card.classList.contains('is-current'); });
+      var index = cards.indexOf(active);
+      if (index < 0) return;
+      // 무한 루프에서도 원본의 현재·다음·이전 카드만 사용하고 시각용 사본은 로드하지 않는다.
+      [0, 1, -1].forEach(function (offset) {
+        warmCard(cards[(index + offset + cards.length) % cards.length]);
+      });
+    }
+
+    targets.forEach(function (target) {
+      if (target.classList.contains('card-rail')) {
+        target._preloadMedia = function (current) { warmTarget(target, current); };
+      }
+    });
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          entry.target._previewNear = entry.isIntersecting;
+          if (entry.isIntersecting) warmTarget(entry.target);
+        });
+      }, { rootMargin: '600px 0px' });
+      targets.forEach(function (target) { observer.observe(target); });
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) targets.forEach(function (target) { warmTarget(target); });
+    });
+  }
+
   function scrollToTarget(el, smooth) {
     if (!el) return;
     // Sheets cover the screen; scroll the page to their section underneath.
@@ -1279,6 +1342,7 @@ export function startPortfolioRuntime() {
           if (transferFocus) current.focus({ preventScroll: true });
         }
         controls.update(current);
+        if (isProjectRail && rail._preloadMedia) rail._preloadMedia(current);
       }
       if (cards.length || track) {
         rail.tabIndex = 0;
@@ -1570,6 +1634,7 @@ export function startPortfolioRuntime() {
     initSectionReveals();
     initReveals();
     initLazyVideos();
+    initProjectPreviewPreload();
     document.querySelectorAll('.sheet.is-open').forEach(revealSheet);
   }
 

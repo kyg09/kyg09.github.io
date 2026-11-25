@@ -31,7 +31,8 @@ export function AboutSection() {
           <p>
             {'복지용구 스토어와 업무 시스템을 개발해 온 '}
             <strong className="intro-emphasis">
-              {'프론트엔드 개발자 김영근'}
+              <span data-intro-emphasis-text>{'프론트엔드 개발자 김영근'}</span>
+              <span className="intro-emphasis-lines" aria-hidden="true" />
               <svg
                 className="intro-profile-accent"
                 viewBox="0 0 36 32"

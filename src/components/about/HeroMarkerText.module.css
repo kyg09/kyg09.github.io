@@ -4,5 +4,5 @@
 .text svg { pointer-events: none; }
 
 /* 본문 마커와 이름의 기존 포인트가 같은 hover/누름 상태로 함께 반응한다. */
-.trigger[data-marker-active='true'] :global(.intro-emphasis)::after { opacity: 1; transform: scaleY(1.2); }
+.trigger[data-marker-active='true'] :global(.intro-emphasis-line) { opacity: 1; transform: scaleY(1.2); }
 .trigger[data-marker-active='true'] :global(.intro-profile-accent) { visibility: visible; }

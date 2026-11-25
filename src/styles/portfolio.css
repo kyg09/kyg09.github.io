@@ -755,7 +755,7 @@ a {
 }
 
 .copy-email::after,
-.hero-statement .intro-emphasis::after {
+.hero-statement .intro-emphasis-line {
   content: "";
   @apply absolute;
   left: 0;
@@ -771,13 +771,25 @@ a {
   @apply pointer-events-none;
 }
 
+/* 줄별 장식은 절대 위치라 기존 문장 폭·줄간격을 바꾸지 않는다. */
+.intro-emphasis-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-statement .intro-emphasis-line {
+  right: auto;
+  bottom: auto;
+}
+
 .copy-email:focus-visible::after {
   opacity: 1;
   transform: scaleY(1.2);
 }
 
 .copy-email:is(:hover:where(.can-hover *), .is-touch-active)::after,
-.hero-statement .intro-emphasis:is(:hover:where(.can-hover *), .is-touch-active)::after {
+.hero-statement .intro-emphasis:is(:hover:where(.can-hover *), .is-touch-active) .intro-emphasis-line {
   opacity: 1;
   transform: scaleY(1.2);
 }
@@ -788,7 +800,7 @@ a {
 .post-content a.is-touch-active::after,
 .experience-project.is-touch-active::after,
 .copy-email.is-touch-active::after,
-.hero-statement .intro-emphasis.is-touch-active::after {
+.hero-statement .intro-emphasis.is-touch-active .intro-emphasis-line {
   opacity: 1;
   transform: scaleY(1.2);
   transition-duration: 80ms;
