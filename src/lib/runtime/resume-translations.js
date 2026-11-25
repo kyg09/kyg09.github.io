@@ -49,6 +49,6 @@ export const portfolioResumeEnglish = {
   '프로야구 경기 영상을 시청하는': 'Contributed to maintenance and select feature development for the',
   'U+프로야구': 'U+ Baseball',
   '웹·웹앱의 유지보수와 일부 기능 개발에 참여했습니다. Shaka Player에 PallyCon DRM을 연동하고 브라우저별 DASH·HLS 재생을 설정했습니다.': 'website and web app for streaming professional baseball. Integrated PallyCon DRM with Shaka Player and configured DASH and HLS playback across browsers.',
-  '동아대학교 국어국문학과 졸업 · 신문방송학과 부전공 · 2009.03–2016.02 · 3.63/4.5': 'Dong-A University · Korean Language and Literature, with a minor in Journalism and Broadcasting · Mar 2009–Feb 2016 · GPA 3.63/4.5',
+  '동아대학교 국어국문학과 졸업 · 신문방송학과 부전공 · 2009.03–2016.02': 'Dong-A University · Korean Language and Literature, with a minor in Journalism and Broadcasting · Mar 2009–Feb 2016',
   '육군 병장 전역 · 2011.06–2013.03': 'Republic of Korea Army · Discharged at the rank of sergeant · Jun 2011–Mar 2013',
 };
